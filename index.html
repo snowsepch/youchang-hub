@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>右昌店 · Apple Shop 工具中心</title>
+<style>
+:root{
+  --bg:#f5f5f7;
+  --tile:#ffffff;
+  --ink:#1d1d1f;
+  --ink2:#6e6e73;
+  --ink3:#86868b;
+  --line:#d2d2d7;
+  --blue:#0071e3;
+  --blue2:#0066cc;
+  --shadow:0 1px 3px rgba(0,0,0,.04);
+  --shadow-h:0 12px 32px rgba(0,0,0,.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","PingFang TC","Noto Sans TC",sans-serif;
+  background:var(--bg);color:var(--ink);min-height:100dvh;line-height:1.5;
+}
+a{color:inherit;text-decoration:none;}
+
+/* ── Nav ── */
+.nav{
+  position:sticky;top:0;z-index:50;
+  height:48px;display:flex;align-items:center;
+  padding:0 max(22px,calc((100% - 980px)/2));
+  background:rgba(255,255,255,.72);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(0,0,0,.07);
+}
+.nav-logo{font-size:15px;opacity:.85;margin-right:9px;}
+.nav-name{font-size:14px;font-weight:600;letter-spacing:.01em;}
+.nav-name .dim{color:var(--ink3);font-weight:400;margin-left:7px;}
+
+/* ── Hero ── */
+.hero{
+  text-align:center;padding:72px 22px 40px;
+}
+.hero-over{
+  font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--blue2);
+  margin-bottom:14px;
+}
+.hero-title{
+  font-size:52px;font-weight:600;letter-spacing:-.022em;line-height:1.05;color:var(--ink);
+}
+.hero-sub{
+  font-size:18px;color:var(--ink2);margin-top:16px;max-width:30ch;
+  margin-left:auto;margin-right:auto;line-height:1.5;
+}
+
+/* ── Shell ── */
+.shell{max-width:980px;margin:0 auto;padding:24px 22px 80px;}
+
+/* ── Section ── */
+.sec{
+  display:flex;align-items:baseline;gap:14px;
+  margin:48px 0 22px;padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.sec:first-of-type{margin-top:8px;}
+.sec-title{font-size:24px;font-weight:600;letter-spacing:-.01em;}
+.sec-meta{font-size:14px;color:var(--ink3);margin-left:auto;}
+
+/* ── Tools ── */
+.tools{display:grid;gap:18px;}
+.tools.cols-3{grid-template-columns:repeat(3,1fr);}
+.tools.cols-2{grid-template-columns:repeat(2,1fr);}
+
+.tile{
+  display:flex;flex-direction:column;
+  background:var(--tile);border-radius:18px;padding:26px 24px 22px;
+  box-shadow:var(--shadow);
+  transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease;
+  animation:rise .55s cubic-bezier(.16,1,.3,1) both;
+}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-h);}
+.tile:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+.tile-cat{font-size:12px;font-weight:600;color:var(--ink3);letter-spacing:.02em;margin-bottom:9px;}
+.tile-name{font-size:21px;font-weight:600;letter-spacing:-.01em;line-height:1.2;color:var(--ink);}
+.tile-desc{font-size:13.5px;color:var(--ink2);line-height:1.55;margin-top:11px;flex:1;}
+.tile-go{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:14px;font-weight:500;color:var(--blue);margin-top:18px;
+}
+.tile-go svg{width:13px;height:13px;stroke:var(--blue);fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease;}
+.tile:hover .tile-go svg{transform:translate(2px,-2px);}
+
+/* ── Footer ── */
+.footer{
+  text-align:center;padding:28px 22px 40px;
+  border-top:1px solid var(--line);max-width:980px;margin:0 auto;
+}
+.footer p{font-size:12px;color:var(--ink3);line-height:1.7;}
+
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.tile:nth-child(1){animation-delay:.02s}
+.tile:nth-child(2){animation-delay:.07s}
+.tile:nth-child(3){animation-delay:.12s}
+.tile:nth-child(4){animation-delay:.17s}
+.tile:nth-child(5){animation-delay:.22s}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+}
+
+/* ── Tablet ── */
+@media(max-width:880px){
+  .tools.cols-3{grid-template-columns:repeat(2,1fr);}
+  .hero-title{font-size:44px;}
+}
+/* ── Mobile ── */
+@media(max-width:560px){
+  .hero{padding:48px 20px 28px;}
+  .hero-title{font-size:34px;}
+  .hero-sub{font-size:16px;}
+  .shell{padding:16px 20px 56px;}
+  .sec{margin:36px 0 18px;}
+  .sec-title{font-size:21px;}
+  .tools.cols-3,.tools.cols-2{grid-template-columns:1fr;}
+  .tile{padding:22px 20px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-name">右昌店<span class="dim">Apple Shop 工具中心</span></span>
+</nav>
+
+<header class="hero">
+  <div class="hero-over">右昌 · Apple Shop</div>
+  <h1 class="hero-title">工具中心</h1>
+  <p class="hero-sub">9 項常用線上工具集中在這裡，點開即用，不需安裝。</p>
+</header>
+
+<main class="shell">
+
+  <!-- 核心工具 -->
+  <section>
+    <div class="sec">
+      <h2 class="sec-title">核心工具</h2>
+      <span class="sec-meta">5 項</span>
+    </div>
+    <div class="tools cols-3">
+
+      <a class="tile" href="https://snowsepch.github.io/member-poster/" target="_blank" rel="noopener">
+        <div class="tile-cat">換檔期</div>
+        <h3 class="tile-name">會員優惠海報系統</h3>
+        <p class="tile-desc">上傳檔期資料，自動產出 5 頁 A4 會員海報，點字即改、一鍵列印。涵蓋 iPhone、iPad、Mac、Apple Watch、AirPods。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://snowsepch.github.io/arrival-dashboard/" target="_blank" rel="noopener">
+        <div class="tile-cat">庫存管理</div>
+        <h3 class="tile-name">到貨提醒儀表板</h3>
+        <p class="tile-desc">上傳 Excel 管理待通知訂單，緊急、一般、已通知三色徽章，快速搜尋。Apple 正廠與副廠分頁顯示。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://snowsepch.github.io/inventory-system/" target="_blank" rel="noopener">
+        <div class="tile-cat">補貨排程</div>
+        <h3 class="tile-name">配件庫存管理系統</h3>
+        <p class="tile-desc">上傳 Excel 進行庫存水位分析，匯出補貨行事曆與報表。低於 14 天與 14 到 30 天分級提醒。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://snowsepch.github.io/accessory-display/" target="_blank" rel="noopener">
+        <div class="tile-cat">配件管理</div>
+        <h3 class="tile-name">配件陳列建議</h3>
+        <p class="tile-desc">副廠配件銷售 TOP 15 對應花車陳列位置建議，每季更新，黃金層優先擺放高銷量品項。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://snowsepch.github.io/accessory-analysis/" target="_blank" rel="noopener">
+        <div class="tile-cat">POS 分析</div>
+        <h3 class="tile-name">配件陳列分析系統</h3>
+        <p class="tile-desc">上傳 POS Excel 自動排名 TOP 15，產出貨架示意圖、多期比較與導購話術框架。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 社群經營 -->
+  <section>
+    <div class="sec">
+      <h2 class="sec-title">社群經營</h2>
+      <span class="sec-meta">2 項</span>
+    </div>
+    <div class="tools cols-2">
+
+      <a class="tile" href="https://snowsepch.github.io/line-poster/" target="_blank" rel="noopener">
+        <div class="tile-cat">圖片生成</div>
+        <h3 class="tile-name">Line@ 社群圖片生成</h3>
+        <p class="tile-desc">舊換新、教育價、檔期優惠、小教室、分期表共 5 種文宣圖，一鍵產出 1100 × 1000、300 DPI 的 PNG。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://snowsepch.github.io/social-post-dashboard/" target="_blank" rel="noopener">
+        <div class="tile-cat">貼文洞察</div>
+        <h3 class="tile-name">社群貼文洞察儀表板</h3>
+        <p class="tile-desc">30 篇可直接複製的社群貼文與 15 篇限動短版，依產品線收納，內建出圖面板自動配圖示。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 小教室 -->
+  <section>
+    <div class="sec">
+      <h2 class="sec-title">小教室</h2>
+      <span class="sec-meta">2 項</span>
+    </div>
+    <div class="tools cols-2">
+
+      <a class="tile" href="https://snowsepch.github.io/workshop-generator/" target="_blank" rel="noopener">
+        <div class="tile-cat">簡報生成</div>
+        <h3 class="tile-name">小教室簡報生成器</h3>
+        <p class="tile-desc">選主題即產出小教室顧客簡報、宣傳海報、社群文案與官網連結，多門市共用。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+      <a class="tile" href="https://snowsepch.github.io/workshop-generator-grok/" target="_blank" rel="noopener">
+        <div class="tile-cat">簡報生成 · Grok 版</div>
+        <h3 class="tile-name">小教室生成器 Grok 版</h3>
+        <p class="tile-desc">小教室生成器的平行版本，收錄 55 個主題並多了實作練習欄位，與原版並存。</p>
+        <span class="tile-go">開啟<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>右昌店 · Apple Shop 工具中心　·　9 項線上工具</p>
+</footer>
+
+</body>
+</html>
